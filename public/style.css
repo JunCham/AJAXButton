@@ -1,1 +1,3 @@
-consol.log('我是style，你好')
+h1 {
+  color: blue;
+}

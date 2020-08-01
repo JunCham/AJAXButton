@@ -14,6 +14,7 @@ getCSS.onclick = () => {
         style.innerHTML = request.response;
         //插到相应的位置
         document.head.appendChild(style);
+        console.log("成功了");
       } else {
         alert("加载CSS失败");
       }
@@ -63,13 +64,11 @@ getXML.onclick = () => {
   const request = new XMLHttpRequest();
   request.open("GET", "/4.xml");
   request.onreadystatechange = () => {
-    console.log(request.readyState);
-    // 下载完成但不确定成功与否
     if (request.readyState === 4) {
       //判断是否成功
       if (request.status >= 200 && request.status < 300) {
         //创建style
-        const dom = document.createElement("dom");
+        const dom = request.responseXML;
         //填写style的内容
         const text = dom.getElementsByTagName("warining")[0].textContent;
         console.log(text.trim());
@@ -125,7 +124,7 @@ getPAGE.onclick = () => {
     } else {
       alert("加载下一页失败");
     }
-    console.log('n='n);
+    console.log("n=" + n);
   };
   request.onerror = () => {
     console.log("失败了");
