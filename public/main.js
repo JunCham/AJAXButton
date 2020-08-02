@@ -70,7 +70,7 @@ getXML.onclick = () => {
         //创建style
         const dom = request.responseXML;
         //填写style的内容
-        const text = dom.getElementsByTagName("warining")[0].textContent;
+        const text = dom.getElementsByTagName("warning")[0].textContent;
         console.log(text.trim());
       } else {
         alert("加载XML失败");
@@ -113,7 +113,7 @@ getPAGE.onclick = () => {
   request.onreadystatechange = () => {
     console.log(request.readyState);
     // 下载完成但不确定成功与否
-    if (request.status >= 200 && request.status < 300) {
+    if ((request.status = 200 && request.readyState === 4)) {
       //创建object
       const array = JSON.parse(request.response);
       array.forEach((item) => {
@@ -121,8 +121,6 @@ getPAGE.onclick = () => {
         li.textContent = item.id;
         xxx.appendChild(li);
       });
-    } else {
-      alert("加载下一页失败");
     }
     console.log("n=" + n);
   };
